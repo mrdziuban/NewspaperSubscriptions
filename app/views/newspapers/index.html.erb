@@ -1,0 +1,7 @@
+<h1>All Newspapers</h1>
+
+<ul>
+  <% @newspapers.each do |np| %>
+    <li><%= np.name %>, Editor: <%= link_to np.user.name, user_url(np.user) %><li>
+  <% end %>
+<ul>

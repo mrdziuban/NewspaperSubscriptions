@@ -1,0 +1,21 @@
+<h1>Edit Newspaper</h1>
+
+<form action="<%= newspaper_url(@newspaper) %>" method="post">
+  <label for="newspaper_name">Name</label>
+  <input type="text" name="newspaper[name]" id="newspaper_name" value="<%= @newspaper.name %>">
+  <br>
+  <label for="newspaper_editor">Editor</label>
+  <select name="newspaper[editor]" id="newspaper_editor">
+    <% User.all.each do |user| %>
+      <option value="<%= user.id %>" <%= "selected" if np.editor == user.id %>><%= user.name %></option>
+    <% end %>
+  </select>
+
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+
+  <input type="hidden" name="_method" value="put">
+
+  <input type="submit" value="Update">
+</form>
