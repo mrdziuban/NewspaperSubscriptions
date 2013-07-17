@@ -18,7 +18,7 @@ class NewspapersController < ApplicationController
   end
 
   def show
-    @newspaper = Newspaper.find(params[:id]
+    @newspaper = Newspaper.find(params[:id])
   end
 
   def edit
