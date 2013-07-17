@@ -1,6 +1,8 @@
 NewspaperSubscriptions::Application.routes.draw do
   resources :newspapers
   resources :users
+  resource :sessions, only: [:new, :create, :destroy]
+  root to: "sessions#new"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
