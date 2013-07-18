@@ -2,6 +2,7 @@ class SubscriptionPlan < ActiveRecord::Base
   attr_accessible :is_weekly, :newspaper_id, :price
 
   belongs_to :newspaper
+  validate :newspaper
   has_many :subscriptions
   has_many :users, through: :subscriptions
 
