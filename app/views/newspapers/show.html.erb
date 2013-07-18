@@ -7,6 +7,15 @@
   Price: $<%= sp.price %>
   <br>
   Type: <%= sp.is_weekly ? "Weekly" : "Daily" %>
+  <% if @current_user.subscription_plans.include?(sp) %>
+    <%= button_to "Unsubscribe", subscription_url(sp), method: :delete %>
+  <% else %>
+    <form action="<%= subscriptions_url %>" method="post">
+      <input type="hidden" name="subscription[subscription_plan_id]" value="<%= sp.id %>">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="submit" value="Subscribe">
+    </form>
+  <% end %>
   <% if @newspaper.user == @current_user %>
     <%= button_to "Edit", edit_newspaper_subscription_plan_url(@newspaper.id), method: :get %>
     <%= button_to "Delete", newspaper_subscription_plan_url(@newspaper.id, sp.id), method: :delete %>
