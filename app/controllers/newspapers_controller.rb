@@ -27,6 +27,9 @@ class NewspapersController < ApplicationController
 
   def edit
     @newspaper = Newspaper.find(params[:id])
+    if @newspaper.user != @current_user
+      redirect_to newspaper_url(@newspaper)
+    end
   end
 
   def update

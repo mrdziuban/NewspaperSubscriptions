@@ -1,5 +1,7 @@
 NewspaperSubscriptions::Application.routes.draw do
-  resources :newspapers
+  resources :newspapers do
+    resources :subscription_plans, except: [:index, :show]
+  end
   resources :users
   resource :sessions, only: [:new, :create, :destroy]
   root to: "sessions#new"

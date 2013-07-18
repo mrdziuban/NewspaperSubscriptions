@@ -7,6 +7,15 @@
   Price: $<%= sp.price %>
   <br>
   Type: <%= sp.is_weekly ? "Weekly" : "Daily" %>
+  <% if @newspaper.user == @current_user %>
+    <%= button_to "Edit", edit_newspaper_subscription_plan_url(@newspaper.id), method: :get %>
+    <%= button_to "Delete", newspaper_subscription_plan_url(@newspaper.id, sp.id), method: :delete %>
+  <% end %>
   <br>
   <br>
+<% end %>
+
+<% if @newspaper.user == @current_user %>
+  <%= button_to "Edit newspaper", newspaper_url(@newspaper), method: :edit %>
+  <%= link_to "Add subscription plan", new_newspaper_subscription_plan_url(@newspaper.id)  %>
 <% end %>
