@@ -7,6 +7,8 @@
 <body>
 <%= "Logged in as: #{@current_user.name}" if @current_user %>
 <br>
+<%= link_to "Profile", user_url(@current_user) if @current_user %>
+<br>
 <br>
 <% if flash[:notices] %>
   <%= flash[:notices] %>
@@ -15,6 +17,10 @@
 
 <%= yield %>
 
+<br>
+<%= link_to "All newspapers", newspapers_url if @current_user %>
+<br>
+<%= link_to "Create newspaper", new_newspaper_url if @current_user %>
 <br>
 <br>
 <%= button_to "Sign out", sessions_url, method: :delete if @current_user %>

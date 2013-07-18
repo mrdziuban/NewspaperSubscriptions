@@ -3,13 +3,13 @@
 <ul>
   <% @newspapers.each do |np| %>
     <li>
-      <%= np.title %>, Editor: <%= link_to np.user.name, user_url(np.user) %>
+      <%= link_to np.title, newspaper_url(np) %>, Editor: <%= link_to np.user.name, user_url(np.user) %>
       <ul>
-      <% np.subscription_plans.each do |sp| %>
-        <li><%= "#{sp.price}, #{sp.is_weekly ? 'Weekly' : 'Daily'}" %></li>
-      <% end %>
+        <% np.subscription_plans.each do |sp| %>
+          <li><%= "#{sp.price}, #{sp.is_weekly ? 'Weekly' : 'Daily'}" %></li>
+        <% end %>
       </ul>
     </li>
   <% end %>
-<ul>
+</ul>
 <br>

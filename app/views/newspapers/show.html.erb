@@ -17,5 +17,6 @@
 
 <% if @newspaper.user == @current_user %>
   <%= button_to "Edit newspaper", newspaper_url(@newspaper), method: :edit %>
+  <%= button_to "Delete newspaper", newspaper_url(@newspaper), method: :delete %>
   <%= link_to "Add subscription plan", new_newspaper_subscription_plan_url(@newspaper.id)  %>
 <% end %>
