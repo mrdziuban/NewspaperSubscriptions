@@ -1,5 +1,12 @@
-<h1><%= @newspaper.name %></h1>
+<h1><%= @newspaper.title %></h1>
 
 <h3>Edited by: <%= @newspaper.user.name %></h3>
 
-<!-- Add list of subscribers? -->
+<h4>Subscription plans:</h4>
+<% @newspaper.subscription_plans.each do |sp| %>
+  Price: $<%= sp.price %>
+  <br>
+  Type: <%= sp.is_weekly ? "Weekly" : "Daily" %>
+  <br>
+  <br>
+<% end %>

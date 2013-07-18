@@ -15,6 +15,7 @@ class NewspapersController < ApplicationController
     if @newspaper.save
       redirect_to newspaper_url(@newspaper)
     else
+      p @newspaper.errors.full_messages
       flash[:notices] = "Could not create newspaper"
       render :new
     end

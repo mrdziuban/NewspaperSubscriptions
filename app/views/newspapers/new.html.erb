@@ -10,8 +10,23 @@
       <option value="<%= user.id %>" <%= "selected" if @newspaper.editor == user.id %>><%= user.name %></option>
     <% end %>
   </select>
-
-  
+  <br>
+  <br>
+  Subscription plans:
+  <br>
+  <% 3.times do |i| %>
+    <label for="newspaper_subscription_plan_<%= i %>_price">Price</label>
+    <input type="text" placeholder="0.00" name="newspaper[subscription_plans_attributes][<%= i %>][price]" id="newspaper_subscription_plan_<%= i %>_price">
+    <br>
+    Type:
+    <br>
+    <input type="checkbox" name="newspaper[subscription_plans_attributes][<%= i %>][is_weekly]" value="<%= true %>" id="newspaper_subscription_<%= i %>_weekly">
+    <label for="newspaper_subscription_<%= i %>_weekly">Weekly</label>
+    <input type="checkbox" name="newspaper[subscription_plans_attributes][<%= i %>][is_weekly]" value="<%= false %>" id="newspaper_subscription_<%= i %>_daily">
+    <label for="newspaper_subscription_<%= i %>_daily">Daily</label>
+    <br>
+    <br>
+  <% end %>
 
   <input type="hidden"
          name="authenticity_token"
