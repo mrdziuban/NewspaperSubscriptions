@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many :newspapers, foreign_key: :editor
+  has_many :subscriptions
 
   validates :name, presence: true, uniqueness: true
   validates :password, presence: :true, length: {minimum: 6}, on: :create
