@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   before_filter :authenticate, except: [:new, :create]
 
   def create
-    user = User.find_by_username(params[:session][:username])
+    user = User.find_by_name(params[:session][:name])
     if user
       if user.authenticate(params[:session][:password])
         user.token = SecureRandom.urlsafe_base64

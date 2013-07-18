@@ -7,9 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  Logged in as: <%= @current_user.name if @current_user %>
+<%= "Logged in as: #{@current_user.name}" if @current_user %>
 
 <%= yield %>
 
+<br>
+<br>
+<%= button_to "Sign out", sessions_url, method: :delete %>
 </body>
 </html>
