@@ -1,11 +1,11 @@
 class SubscriptionPlansController < ApplicationController
   def new
     @subscription_plan = SubscriptionPlan.new
-    @np = Newspaper.find(params[:newspaper_id])
   end
 
   def create
     @subscription_plan = SubscriptionPlan.new(params[:subscription_plan])
+    @subscription_plan.newspaper_id = params[:newspaper_id]
     if @subscription_plan.save
       redirect_to newspaper_url(@subscription_plan.newspaper)
     else

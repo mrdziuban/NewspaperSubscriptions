@@ -1,4 +1,4 @@
-<h1>New Subscription Plan for <%= @np.title %></h1>
+<h1>New Subscription Plan</h1>
 
 <form action="<%= newspaper_subscription_plans_url %>" method="post">
   <label for="subscription_plan_price">Price</label>
@@ -11,8 +11,6 @@
     <input type="checkbox" name="subscription_plan[is_weekly]" value="<%= false %>" id="subscription_daily">
     <label for="subscription_daily">Daily</label>
     <br>
-
-    <input type="hidden" name="subscription_plan[newspaper_id]" value="<%= @np.id %>">
 
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="submit" name="Create">
