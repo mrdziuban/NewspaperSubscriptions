@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many :newspapers, foreign_key: :editor
-  has_many :subscriptions
+  has_many :subscriptions, dependent: :destroy
   has_many :subscription_plans, through: :subscriptions
 
   validates :name, presence: true, uniqueness: true
