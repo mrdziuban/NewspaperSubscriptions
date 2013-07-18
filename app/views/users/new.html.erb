@@ -9,6 +9,22 @@
   <br>
   <label for="user_password_confirmation">Password confirmation</label>
   <input type="password" name="user[password_confirmation]" id="user_password_confirmation">
+  <br>
+  <br>
+  Subscriptions:
+  <br>
+  <br>
+  <% @newspapers.each do |np| %>
+    <label for="<%= np.title %>_subscription_plan"><%= np.title %></label>
+    <br>
+    <select name="user[subscription_plan_ids][]" id="<%= np.title %>_subscription_plan">
+      <% np.subscription_plans.each do |sp| %>
+        <option value="<%= sp.id %>"><%= sp.price %>, <%= sp.is_weekly ? "Weekly" : "Daily" %></option>
+      <% end %>
+    </select>
+    <input type="hidden" name="user[subscription_plan_ids][]" value="">
+    <br>
+  <% end %>
 
   <input type="hidden"
          name="authenticity_token"

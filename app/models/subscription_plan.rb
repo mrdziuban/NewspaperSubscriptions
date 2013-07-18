@@ -3,6 +3,7 @@ class SubscriptionPlan < ActiveRecord::Base
 
   belongs_to :newspaper
   has_many :subscriptions
+  has_many :users, through: :subscriptions
 
   validates :price, presence: true
   validates_inclusion_of :is_weekly, :in => [true, false]

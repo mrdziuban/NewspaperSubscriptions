@@ -1,3 +1,8 @@
 <h1><%= @user.name %></h1>
 
-<!-- Add subscription info here -->
+<h3>Subscriptions: </h3>
+<ul>
+  <% @user.subscription_plans.each do |sp| %>
+    <li><%= "#{sp.newspaper.title}, $#{sp.price}, #{sp.is_weekly ? 'Weekly' : 'Daily'}" %></li>
+  <% end %>
+</ul>
