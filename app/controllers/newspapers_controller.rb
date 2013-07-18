@@ -9,6 +9,9 @@ class NewspapersController < ApplicationController
 
   def create
     @newspaper = Newspaper.new(params[:newspaper])
+    @newspaper.subscription_plans.each do |sp|
+      sp.newspaper_id = @newspaper.id
+    end
     if @newspaper.save
       redirect_to newspaper_url(@newspaper)
     else
